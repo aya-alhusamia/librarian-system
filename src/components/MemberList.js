@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import MemberItem from "./MemberItem";
 import MemberSearchBar from "./MemberSearchBar";
 import { useSelector } from "react-redux";
+import { FaMale } from "react-icons/fa";
 const MemberList = () => {
   const [query, setQuery] = useState("");
   const members = useSelector((state) => state.members);
@@ -17,9 +18,17 @@ const MemberList = () => {
 
   return (
     <div>
-      <MemberSearchBar setQuery={setQuery} />
-      <div>{membersList}</div>
-      <Link to="/members/forms">Form Member</Link>
+      <div className="add">
+        <MemberSearchBar setQuery={setQuery} />
+
+        <div className="icn">
+          <Link to="/members/forms">
+            <FaMale />
+          </Link>
+        </div>
+      </div>
+
+      <section className="cards">{membersList}</section>
     </div>
   );
 };

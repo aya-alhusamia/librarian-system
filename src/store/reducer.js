@@ -7,6 +7,8 @@ import {
   UPDATE_BOOK,
   DELETE_MEMBER,
   UPDATE_MEMBER,
+  AVAILABLE_BOOK,
+  UNAVAILABLE_BOOK,
 } from "./actions";
 import { CREATE_BOOK } from "./actions";
 
@@ -33,15 +35,14 @@ const reducer = (state = initialState, action) => {
         ...state,
         books: [...state.books, newBook],
       };
-    case UPDATE_BOOK:
-      const { updatedBook } = action.payload;
-      updatedBook.slug = slugify(updatedBook.title);
-      return {
-        ...state,
-        books: state.books.map((book) =>
-          book.id === updatedBook.id ? updatedBook : book
-        ),
-      };
+    case UPDATE_BOOK: {
+      const { updatedBook } = action.payload.book;
+      updatedBook.id = !updatedBook.id;
+      let newBooks = state.books.map((book) =>
+        book.id != action.payload.id ? book : updatedBook
+      );
+      return { ...state, books: newBooks };
+    }
     case CREATE_MEMBER:
       const { newMember } = action.payload;
       newMember.id = state.members[state.members.length - 1].id + 1;
@@ -67,6 +68,37 @@ const reducer = (state = initialState, action) => {
           member.id === updatedMember.id ? updatedMember : member
         ),
       };
+    // case AVAILABLE_BOOK:
+    //   const switchBook = state.books.filter(
+    //     (book) => book.id === action.payload.book.id
+    //   );
+
+    //   switchBook[switchBook.length - 1].available = false;
+
+    //   return {
+    //     ...state,
+    //     books: state.books.map((book) =>
+    //       book.available === action.payload.book.available
+    //         ? action.payload.book
+    //         : book
+    //     ),
+    //   };
+    // case UNAVAILABLE_BOOK:
+    //   const switchToUnAvailableBook = state.books.filter(
+    //     (book) => book.id === action.payload.book.id
+    //   );
+    //   switchToUnAvailableBook[
+    //     switchToUnAvailableBook.length - 1
+    //   ].available = true;
+    //   return {
+    //     ...state,
+    //     books: state.books.map((book) =>
+    //       book.available === action.payload.book.available
+    //         ? action.payload.book
+    //         : book
+    //     ),
+    //   };
+
     default:
       return state;
   }

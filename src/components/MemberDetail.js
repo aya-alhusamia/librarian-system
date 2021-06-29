@@ -5,7 +5,7 @@ const MembersDetail = (props) => {
   const membersSlug = useParams().membersSlug;
 
   const member = props.members.find((member) => member.slug === membersSlug);
-  if (!member) return <Redirect to="/*" />;
+  if (!member) return <Redirect to={`/members/${props.member?.slug}`} />;
   const booksList = (id) => {
     let test = books.filter((book) => book.id === id);
     return test[0];
@@ -13,18 +13,20 @@ const MembersDetail = (props) => {
 
   console.log(booksList[0]);
   return (
-    <div>
+    <div className="memeber">
       <h2>
         {" "}
         {member.firstName} {member.lastName}
       </h2>
-      <img src={member.img} alt={member.firstName} />
-      <p>
-        {member.currentlyBorrowedBooks.map((book) => (
-          <div key={book}>{booksList(book)?.title}</div>
+      <img className="img-member" src={member.img} alt={member.firstName} />
+      <ul className="det">
+        {member?.currentlyBorrowedBooks?.map((book) => (
+          <strong>
+            <li key={book}>{booksList(book)?.title}</li>
+          </strong>
         ))}
-      </p>
-      <p>{member.membership}</p>
+      </ul>
+      <p className="ship">{member.membership}</p>
     </div>
   );
 };

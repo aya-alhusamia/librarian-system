@@ -6,7 +6,7 @@ import members from "../members";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 const BookDetail = (props) => {
-  const [esraa, setEsraa] = useState("");
+  const [esraa, setEsraa] = useState(true);
   const books = useSelector((state) => state.books);
   const booksSlug = useParams().booksSlug;
   const book = books.find((book) => book.slug === booksSlug);
@@ -16,28 +16,52 @@ const BookDetail = (props) => {
     console.log(membersTest, "TT");
     return membersTest[0];
   };
+  const availableMember = members.filter((member) => {
+    if (member.membership === "gold") {
+      if (member.currentlyBorrowedBooks.length < 3) {
+        return member;
+      }
+    } else if (member.membership === "silver") {
+      if (member.currentlyBorrowedBooks.length < 2) {
+        return member;
+      }
+    } else if (member.membership === "platinum") {
+      if (member.currentlyBorrowedBooks.length < 5) {
+        return member;
+      }
+    }
+  });
+  console.log(members);
+  const handeChange = () => {
+    setEsraa(!true);
+  };
   // setEsraa(membersList);
   return (
-    <DetailWrapper>
+    <div className="memeber">
       <h1>{book.title}</h1>
-      <img src={book.image} alt={book.title} />
+      <img className="img-member" src={book.image} alt={book.title} />
       <p>{book.author}</p>
-      <button onClick={() => props.setBook(null)}>Back</button>
-      <p>
-        {book.borrowedBy.map((member) => (
-          <Link to={`/members/${membersList(member).slug}`} key={member}>
-            {membersList(member)?.firstName}
-          </Link>
-        ))}
-      </p>
-      <DeleteButton
-        // deletebook={props.deletebook}
-        bookID={book.id}
-      ></DeleteButton>
-      {/* <Link to={`/books/${book.slug}/edit`}>
-        <button>edit</button>
-      </Link> */}
-    </DetailWrapper>
+      {book.available ? (
+        <ul className="det">
+          {availableMember.map((member) => (
+            <div>
+              <li>{member.firstName}</li>
+              <button onClick={handeChange}>Barrow</button>
+            </div>
+          ))}
+        </ul>
+      ) : (
+        <ul className="det">
+          {book?.borrowedBy?.map((member) => (
+            <li>
+              <Link to={`/members/${membersList(member).slug}`} key={member}>
+                {membersList(member)?.firstName}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
   );
 };
 

@@ -38,37 +38,49 @@ const FormMember = () => {
   //   };
   return (
     <Form onSubmit={handleSubmit}>
-      <Form.Group>
-        <Form.Label>Enter your First Name:</Form.Label>
-        <Form.Control
-          type="text"
-          title="firstName"
-          value={member.firstName}
-          onChange={handleChange}
-          placeholder="Enter your First Name........."
-        />
-      </Form.Group>
-      <Form.Group>
-        <Form.Label>Enter your Last Name</Form.Label>
-        <Form.Control
-          type="text"
-          title="lastName"
-          value={member.lastName}
-          onChange={handleChange}
-          placeholder="Enter your Last Name............."
-        />
-      </Form.Group>
-      <Form.Group>
-        <Form.Label>Enter the title of image:</Form.Label>
-        <Form.Control
-          type="text"
-          title="img"
-          value={member.img}
-          onChange={handleChange}
-          placeholder="Enter the image of Memper"
-        />
-      </Form.Group>
-      <Button type="submit"> Submit </Button>
+      <div className="form-group">
+        <Form.Group>
+          <Form.Label>Enter your First Name:</Form.Label>
+          <Form.Control
+            className="form-control"
+            type="text"
+            title="firstName"
+            value={member.firstName}
+            onChange={handleChange}
+            placeholder="Enter your First Name........."
+          />
+        </Form.Group>
+      </div>
+      <div className="form-group">
+        <Form.Group>
+          <Form.Label>Enter your Last Name</Form.Label>
+          <Form.Control
+            className="form-control"
+            type="text"
+            title="lastName"
+            value={member.lastName}
+            onChange={handleChange}
+            placeholder="Enter your Last Name............."
+          />
+        </Form.Group>
+      </div>
+      <div className="form-group">
+        <Form.Group>
+          <Form.Label>Enter the title of image:</Form.Label>
+          <Form.Control
+            className="form-control"
+            type="text"
+            title="img"
+            value={member.img}
+            onChange={handleChange}
+            placeholder="Enter the image of Memper"
+          />
+        </Form.Group>
+      </div>
+      <Button type="submit" variant="secondary">
+        {" "}
+        Submit{" "}
+      </Button>
     </Form>
   );
 };

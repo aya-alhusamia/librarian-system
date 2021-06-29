@@ -15,7 +15,8 @@ import "./App.css";
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./darkMode/theme";
 import { GlobalStyles } from "./darkMode/global";
-import Navbar from "./components/Navbar";
+import Navbare from "./components/Navbar";
+import "./App.css";
 
 function App() {
   const [theme, setTheme] = useState(localStorage.getItem("color") || "light");
@@ -34,7 +35,7 @@ function App() {
   return (
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
       <GlobalStyles />
-      <Navbar theme={theme} />
+      <Navbare theme={theme} />
       <Switch>
         <Route path={["/books/forms", "/books/:bookSlug/edit"]}>
           <FormBook />
@@ -58,9 +59,9 @@ function App() {
           <Home />
         </Route>
       </Switch>
-      <button onClick={toggleTheme}>
+      {/* <button onClick={toggleTheme}>
         {theme === "light" ? "Dark" : "Light"} Mode
-      </button>
+      </button> */}
     </ThemeProvider>
   );
 }

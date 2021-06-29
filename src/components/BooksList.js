@@ -4,17 +4,19 @@ import { Link } from "react-router-dom";
 // Components
 import BookItem from "./BookItem";
 import SearchBar from "./SearchBar";
+import { AiFillRead } from "react-icons/ai";
+
 import { List } from "../style";
 //Data
 // import books from "../prducts";
-const BooksList = (props) => {
+const BooksList = ({ props }) => {
   const books = useSelector((state) => state.books);
   const [query, setQuery] = useState("");
   let filterdBook = books.filter((book) => {
-    console.log(
-      book.genre.map((v) => v.toLowerCase().includes(query.toLowerCase())),
-      "test......"
-    );
+    // console.log(
+    //   book.genre.map((v) => v.toLowerCase().includes(query.toLowerCase())),
+    //   "test......"
+    // );
 
     return (
       book.title.toLowerCase().includes(query.toLowerCase()) ||
@@ -22,16 +24,19 @@ const BooksList = (props) => {
     );
   });
   let bookList = filterdBook.map((book) => (
-    <BookItem book={book} key={book.id} setBook={props.setBook} />
+    <BookItem book={book} key={book.id} />
   ));
-
   return (
     <div>
-      <List>
+      <div className="add">
         <SearchBar setQuery={setQuery} />
-        {bookList}
-      </List>
-      <Link to="/books/forms">FormBook</Link>
+        <div className="icn">
+          <Link to="/books/forms">
+            <AiFillRead />
+          </Link>
+        </div>
+      </div>
+      <section className="cards">{bookList}</section>
     </div>
   );
 };

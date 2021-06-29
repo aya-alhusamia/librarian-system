@@ -1,23 +1,39 @@
-import { Link } from "react-router-dom";
+import { Navbar } from "react-bootstrap";
+import { Link, NavLink } from "react-router-dom";
 import { NavProduct, Logo } from "../style";
-import Light from "../image/light.jfif";
-import Dark from "../image/dark.png";
-const Navbar = (props) => {
+
+const Navbare = () => {
   return (
-    <nav className="navbar navbar-expand">
-      <Logo to="/" className="navbar-brand">
-        <img src={props.theme === "light" ? Light : Dark} />
-      </Logo>
-      <div className="navbar-nav ml-auto">
-        {/* <Link to="/">Home</Link> */}
-        <NavProduct to="/books" className="nav-item">
-          Books
-        </NavProduct>
-        <NavProduct to="/members" className="nav-item">
-          Members
-        </NavProduct>
-      </div>
-    </nav>
+    <div>
+      {/* <Navbar to="/" className="nav">
+        <div className="mr-auto">
+          <Navbar.Brand>
+            <NavLink to="/books" className="nav-item">
+              Books
+            </NavLink>
+          </Navbar.Brand>
+          <Navbar.Brand>
+            <NavLink to="/members" className="nav-item">
+              Members
+            </NavLink>
+          </Navbar.Brand>
+        </div>
+      </Navbar> */}
+      <nav className="navbar navbar-expand-sm bg-secondary navbar-light">
+        <ul className="navbar-nav">
+          <li className="nav-item active">
+            <NavProduct to="/books" className="nav-link">
+              Books
+            </NavProduct>
+          </li>
+          <li className="nav-item">
+            <NavProduct to="/members" className="nav-link">
+              Members
+            </NavProduct>
+          </li>
+        </ul>
+      </nav>
+    </div>
   );
 };
-export default Navbar;
+export default Navbare;

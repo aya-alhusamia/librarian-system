@@ -63,3 +63,21 @@ export const updateMember = (updatedMember) => {
     },
   };
 };
+export const AVAILABLE_BOOK = "AVAILABLE_BOOK";
+export const switchBook = (book) => {
+  return {
+    type: AVAILABLE_BOOK,
+    payload: {
+      book: book,
+    },
+  };
+};
+export const UNAVAILABLE_BOOK = "UNAVAILABLE_BOOK";
+export const switchToUnAvailableBook = (book) => {
+  return {
+    type: UNAVAILABLE_BOOK,
+    payload: {
+      book: book,
+    },
+  };
+};

@@ -1,38 +1,205 @@
-.App {
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Ink Free;
+}
+
+html,
+body {
+  /* background: #000 url("img/bg.jpg") no-repeat center center/cover; */
+  height: 100vh;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.rhf-nav-link-nav-link-rhf-border-right {
+  padding-bottom: 20px !important;
+}
+a {
+  text-decoration: none;
+}
+.globalCQbannerimg {
+  max-width: 100%;
+  width: 80%;
+}
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+.btn {
+  display: inline-block;
+  color: #fff;
+  background-color: #3fb573;
+  font-size: 1em;
   text-align: center;
+  padding: 10px 15px;
+  border: 0;
+  margin: 10px 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+header {
+  height: 200px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+header img {
+  width: 200px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.center {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.search {
+  height: 100px;
+  width: 50%;
+  margin-left: 25%;
+  margin-top: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+input[type="text"] {
+  display: block;
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 5%;
+  width: 60%;
+  margin: auto;
+  outline: none;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 4rem;
+  margin: 20px;
+}
+
+.card {
+  cursor: pointer;
+  background-color: transparent;
+  height: 300px;
+  perspective: 1000px;
+  box-shadow: 0 0 20px #707070;
+}
+
+.card h1 {
+  font-size: 25px;
+  border-bottom: 1px #fff solid;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.card-back {
+  background-color: #fff7ee;
+  color: #414347;
+  padding: 20px;
+  transform: rotateY(180deg);
+}
+
+.card li {
+  list-style: none;
+  padding-bottom: 10px;
+}
+
+.memeber {
+  font-family: Ink Free;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid #5c623b;
+  margin: 10%;
+  box-shadow: 0 0 20px #808952;
+  align-items: center;
+  justify-content: center;
+  text-align: justify;
+  padding: 20px;
+  border-radius: 15px;
+  background: linear-gradient(to top, rgb(178, 184, 131) 50%, white, 50%);
+  background-size: 100% 200%;
+  background-color: all 0.5s ease;
+  overflow: hidden;
+}
+.memeber:hover {
+  opacity: 0.9;
+  background-position: #5c623b;
+  color: #5c623b;
+  border: none;
+  box-shadow: 0 0 20px #707070;
+}
+.img-member {
+  border-radius: 20%;
+  box-shadow: 0 0 20px #707070;
+  width: 30%;
+  /* opacity: 0.97; */
+  border-radius: 50%;
+  border: 3px;
+  margin-top: 50px;
+  width: 500px;
+  height: 500px;
+  transition: all 0.6s;
+  box-shadow: 0 6px 20px 0 rgba(255, 255, 255, 0.7),
+    0 6px 20px 0 rgba(255, 255, 255, 0.7);
+}
+.img-member:hover {
+  transform: rotate(360deg);
+}
+.det {
+  padding: 20px;
+  font-size: 150%;
+}
+.ship {
+  font-size: 150%;
+}
+.add {
+  display: flex;
+  flex-direction: row;
+}
+.icn {
+  margin-top: 25px;
+}
+@media (max-width: 800px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media (max-width: 500px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+  .card img {
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
   }
 }

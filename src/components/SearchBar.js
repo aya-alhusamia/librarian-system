@@ -1,10 +1,15 @@
 import { SearchBarStyled } from "../style";
 const SearchBar = (props) => {
   return (
-    <SearchBarStyled
-      onChange={(event) => props.setQuery(event.target.value)}
-      placeholder="Search for a book name"
-    />
+    <section className="search">
+      <form>
+        <input
+          className="form-control"
+          onChange={(event) => props.setQuery(event.target.value)}
+          placeholder="Search for a book name"
+        />
+      </form>
+    </section>
   );
 };
 

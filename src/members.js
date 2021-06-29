@@ -1,5 +1,8 @@
-import female from "./pics/female.png";
-import male from "./pics/male.png";
+import laila from "./pics/laila.jfif";
+import reem from "./pics/reem.jfif";
+import male1 from "./pics/male1.jfif";
+import male2 from "./pics/male2.jfif";
+import male3 from "./pics/male4.png";
 
 const members = [
   {
@@ -9,7 +12,7 @@ const members = [
     slug: "aziz-alsaffar",
     currentlyBorrowedBooks: [3, 9],
     membership: "gold", // can borrow 3 books
-    img: male,
+    img: male1,
   },
   {
     id: 2,
@@ -18,7 +21,7 @@ const members = [
     slug: "hashim-behbehani",
     currentlyBorrowedBooks: [5],
     membership: "gold", // can borrow 3 books
-    img: male,
+    img: male2,
   },
   {
     id: 3,
@@ -27,7 +30,7 @@ const members = [
     slug: "alhmaza-abdulmonem",
     currentlyBorrowedBooks: [1, 2],
     membership: "silver", // can borrow 2 books
-    img: male,
+    img: male3,
   },
   {
     id: 4,
@@ -36,7 +39,7 @@ const members = [
     slug: "reem-alhasawi",
     currentlyBorrowedBooks: [],
     membership: "platinum", // can borrow 5 books
-    img: female,
+    img: reem,
   },
   {
     id: 5,
@@ -45,7 +48,7 @@ const members = [
     slug: "laila-alkandery",
     currentlyBorrowedBooks: [10, 7, 8],
     membership: "platinum", // can borrow 5 books
-    img: female,
+    img: laila,
   },
 ];
 
